@@ -1,0 +1,32 @@
+;registers
+;R1 = constant 1
+;R2 = n
+;R3 = i
+
+;inital loads
+
+ lea R1,1[R0]        ; R1:= 1
+ load R2,n[R0]       ; R2:= n
+
+;for loop
+
+forloop cmp R3,R2   ; compare i and n
+        jumpge done[R0]     ; exit loop when i greater or equal to n
+        load R4,x[R3]       ; R4:= x[i]
+        load R5,y[R3]       ; R5:= y[i]
+        mul R5,R4,R5        ; R5:= x[i]*y[i]
+        add R6,R6,R5        ; R6:= sum of products (p)
+        add R3,R3,R1        ; i + 1
+        jump forloop[R0]    ; goto loop start
+
+done    store R6,p[R0] ; p:= R6
+        trap R0,R0,R0       ; terminate
+
+n data 3
+p data 0
+x data 2
+  data 5
+  data 3
+y data 6
+  data 2
+  data 4

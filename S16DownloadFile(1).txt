@@ -1,0 +1,14 @@
+; Program Swap
+
+    lea  R1,3[R0]    ; R1 := 3
+    store R1,x[R0]   ; x := 3
+    lea  R2,19[R0]   ; R2 := 19
+    store R2,y[R0]   ; y := 19
+
+    store R1,y[R0]   ; y := 3
+    store R2,x[R0]   ; x := 19
+
+    trap  R0,R0,R0   ; halt
+
+x   data 0
+y   data 0
